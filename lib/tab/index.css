@@ -1,0 +1,70 @@
+.pmd-tab-bar{
+  width: 100%;
+  overflow-x: scroll;
+}
+.pmd-tab-scroller{
+  position: relative;
+  display: flex;
+}
+.pmd-tab-bar::-webkit-scrollbar{
+    display: none;
+  }
+.pmd-tab-item{
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+  box-sizing: content-box;
+  height: 48px;
+  min-width: 200px;
+  max-width: 360px;
+  padding: 0 20px;
+  border: none;
+  background-color: #fff;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  transition: color .1s ease-out;
+}
+.pmd-tab-item::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.pmd-tab-item:hover::before,.pmd-tab-item:focus::before{
+  background: rgba(0,0,0,.03);
+}
+.pmd-tab-item:not([aria-selected="true"]){
+  color: rgba(0,0,0,.5);
+}
+.pmd-tab-Indicator{
+  position: absolute;
+  right: var(--tab-Indicator-right);
+  left: var(--tab-Indicator-left);
+  bottom: 0;
+  height: 2px;
+  width: var(--tab-Indicator-width);
+  background-color: #2196F3;
+  transition: left .25s, right .2s;
+  pointer-events: none;
+}
+
+@media(max-width: 599px){
+  .pmd-tab-item{
+    min-width: 80px;
+  }
+}
+
+@keyframes pmd-tab-scroll{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(var(--pmd-tab-scroll-end,0));
+  }
+}
